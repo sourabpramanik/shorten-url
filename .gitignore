@@ -1,0 +1,5 @@
+/serverless-function/node_modules
+/serverless-function/.vercel
+/serverless-function/.env
+/shorten-url-cli/Cargo.lock
+/shorten-url-cli/target
