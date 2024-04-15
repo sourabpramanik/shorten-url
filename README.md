@@ -1,21 +1,21 @@
-This project is built using Vercel, Neon and Rust. It is a link managing application that has a CLI to create, read and delete short URLs. I have used Vercel to deploy a serverless function for redirection to long URLs, it is easy, fast and free.
+This project is built using Vercel, Neon, and Rust. It is a link-managing application that has a CLI to create, read, and delete short URLs. I have used Vercel to deploy a serverless function for redirection to long URLs, it is easy, fast, and free.
 
-## What is URL shortener and why do we need it?
+## What is a URL shortener and why do we need it?
 
-URL shortener is a service that is used create short URLs that works as an alias for long URLs, this is important when you have a long URL (e.g. https://chart.apis.google.com/chart?chs=500x500&chma=0,0,100,100&cht=p&chco=FF0000%2CFFFF00%7CFF8000%2C00FF00%7C00FF00%2C0000FF&...) and sharing this with others is not that neat, what if you snap out some characters at the end of the URL. 
+URL shortener is a service that is used to create short URLs that work as an alias for long URLs, this is important when you have a long URL (e.g. https://chart.apis.google.com/chart?chs=500x500&chma=0,0,100,100&cht=p&chco=FF0000%2CFFFF00%7CFF8000%2C00FF00%7C00FF00%2C0000FF&...) and sharing this with others is not that neat, what if you snap out some characters at the end of the URL. 
 
-It becomes really hard this way, that is where we can use a URL shortening service that can generate an alias for the long URLs having comparitively very small length. The other benefits of having a short URLs or aliases are you can customise how you want your URL to appear(e.g. https://foo.baz/2fGH553), generate analytics like number of users clicked, country of origin, and many more. 
+It becomes really hard this way, that is where we can use a URL-shortening service that can generate an alias for the long URLs having comparatively shorter lengths. The other benefits of having short URLs or aliases are you can customize how you want your URL to appear(e.g. https://foo.baz/2fGH553), generate analytics like the number of users clicked, country of origin, and many more. 
 
-Many big companies like Twitter or X uses this service for sharing any content outside thier application. 
+Many big companies like Twitter or X uses this service for sharing any content outside their application. 
 
 ## How does it work?
 ![alt text](/assets/image.png)
 
-User enters the shorturl, every shorturl must have a path, the path acts as a unique identifer and using this we query the database to find the record. 
+The user enters the shorturl, and every shorturl must have a path, the path acts as a unique identifier, and using this we query the database to find the record. 
 
-If there exists a record then we will send the browser the long URL to the browser to redirect the user to the destination page, the redirection can be temporary or permanent there are trade-offs on using one over the another. Once the browser recieves the it will open the redirected page.
+If there exists a record then we will send the browser the long URL to the browser to redirect the user to the destination page, the redirection can be temporary or permanent there are trade-offs on using one over the other. Once the browser receives the it will open the redirected page.
 
-If the record doesn't exists or path is not what was expected then user will get 404 status page.
+If the record doesn't exist or the path is not what was expected then the user will get a 404 status page.
 
 As simple as that!!!
 
