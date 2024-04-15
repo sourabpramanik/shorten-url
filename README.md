@@ -1,7 +1,9 @@
-CLI tool to generate custom short URLs for long URLs, manage links, and use custom domains. Works like a personal links manager.
+This project is built using Vercel, Neon and Rust. It is a link managing application that has a CLI to create, read and delete short URLs. I have used Vercel to deploy a serverless function for redirection to long URLs, it is easy, fast and free.
 
-# Motivation
-I built this project because I had to explore Rust more, I was looking for ideas and I found [Dub.co](https://dub.co/) an open-source link repository with great amount of features. So there it is my implementation to generate short URLs(aliases) for long URLs.
+**What is URL shortener and why do we need it?**
+URL shortener is a service that is used create short URLs that works as an alias for long URLs, this is important when you have a long URL (e.g. https://chart.apis.google.com/chart?chs=500x500&chma=0,0,100,100&cht=p&chco=FF0000%2CFFFF00%7CFF8000%2C00FF00%7C00FF00%2C0000FF&...) and sharing this with others is not that neat, what if you snap out some characters at the end of the URL. It becomes really hard this way, that is where we can use a URL shortening service that can generate an alias for the long URLs having comparitively very small length. The other benefits of having a short URLs or aliases are you can customise how you want your URL to appear(e.g. https://foo.baz/2fGH553), generate analytics like number of users clicked, country of origin, and many more. 
+
+Many big companies like Twitter or X uses this service for sharing any content outside thier application. 
 
 # Pre-requisites
 - NodeJS - [Link](https://nodejs.org)
@@ -19,15 +21,15 @@ cd shorten-url
 ```
 
 ## Create a Postgres database
-I appreciate Neon and the team behind it, they ingeniously crafted everything around the standard Postgres database so neatly and expanded the scope to use Postgres in different domains without any overhead.
+I appreciate Neon and the team behind it, they ingeniously crafted everything around the standard Postgres database so neatly and expanded the scope to use Postgres in different domains without any overhead. Not to mention they also have a humble open-source community.
 
-Not to mention they also have a humble open-source community.
+1. Go to their [website](https://console.neon.tech/), log in, or create an account.
 
-1. Go to their website, log in, and create a new project or if you want to use an existing one then skip this step:
-
-2. Inside your project create a new database and name it whatever you want:
+2. Create a project and a database, name them whatever you want:
+![Create project GIF](<GIF Recording 2024-04-15 at 6.16.04 AM.gif>)
 
 3. Go to your project dashboard, select your database, and copy the connection string, you will need this connection string later: 
+![Get connection string](<GIF Recording 2024-04-15 at 6.18.46 AM.gif>)
 
 ## Deploy serverless function Vercel
 Deploying projects on [Vercel](https://vercel.com/docs/deployments/overview) is completely free in hobby accounts, and you can add custom domains to your projects if you have however by default Vercel will generate a production URL for your project.
