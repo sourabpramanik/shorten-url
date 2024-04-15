@@ -1,7 +1,7 @@
-CLI tool to generate custom short urls for long urls, manage links, and use custom domains. Works like a personal links manager.
+CLI tool to generate custom short URLs for long URLs, manage links, and use custom domains. Works like a personal links manager.
 
 # Motivation
-I built this project because I had to explore Rust more, I was looking for ideas and I found [Dub.co](https://dub.co/) which is an open-source link repository with great amount of features. So there it is my implementation to generate short URLs(aliases) for long URLs.
+I built this project because I had to explore Rust more, I was looking for ideas and I found [Dub.co](https://dub.co/) an open-source link repository with great amount of features. So there it is my implementation to generate short URLs(aliases) for long URLs.
 
 # Pre-requisites
 - NodeJS - [Link](https://nodejs.org)
@@ -11,7 +11,7 @@ I built this project because I had to explore Rust more, I was looking for ideas
 
 # Setup
 
-Open your terminal window and clone the repository at any desired location in your machine and go inside the project folder using these command:
+Open your terminal window, clone the repository at any desired location in your machine, and go inside the project folder using these commands:
 
 ```bash
 git clone https://github.com/sourabpramanik/shorten-url.git
@@ -19,11 +19,11 @@ cd shorten-url
 ```
 
 ## Create a Postgres database
-I appreciate Neon and the team behind it, they ingenously crafted eveything around the standard Postgres database so neatly and expanding the scope to use Postgres in different domains without any overhead.
+I appreciate Neon and the team behind it, they ingeniously crafted everything around the standard Postgres database so neatly and expanded the scope to use Postgres in different domains without any overhead.
 
-Not to mention they also have humble open-source community.
+Not to mention they also have a humble open-source community.
 
-1. Go to their website, login and create a new project or if you want to use an existing one then skip this step:
+1. Go to their website, log in, and create a new project or if you want to use an existing one then skip this step:
 
 2. Inside your project create a new database and name it whatever you want:
 
@@ -36,9 +36,9 @@ Deploying projects on [Vercel](https://vercel.com/docs/deployments/overview) is 
     ```bash
     vercel build --prod --cwd ./shorten-url-functions
     ```
-    `--prod` flag will build the function with all the configurations needed by Vercel to deploy and run this function in production environment.
+    `--prod` flag will build the function with all the configurations needed by Vercel to deploy and run this function in the production environment.
     
-    After the build is completed it generate `.vercel` directory in the root, which has all the directories and configuration files containing lots of information like the runtime, project name, entrypoint, filesystem mappings, target environment, packages used, commands to be executed and so on. 
+    After the build is completed it generates `.vercel` directory in the root, which has all the directories and configuration files containing lots of information like the runtime, project name, entry point, filesystem mappings, target environment, packages used, commands to be executed and so on. 
     
     If you are curious to know more about it then go ahead and tweak things here and there (at your own risk) as long as everything works as expected.
 
@@ -46,21 +46,21 @@ Deploying projects on [Vercel](https://vercel.com/docs/deployments/overview) is 
     ```bash
     vercel deploy --prebuilt --prod --cwd ./shorten-url-functions
     ```
-    `--prebuilt` flag is for vercel to locate the `output` directiory inside the `.vercel` and deploy it to production
+    `--prebuilt` flag is for Vercel to locate the `output` directory inside the `.vercel` and deploy it to production
 
-    Only if this is the first time you are deploying this project then you have to answer some of the prompts. This is needed by vercel to make sure your project is deployed properly wiht any alternate approach you may have.
+    Only if this is the first time you are deploying this project then you have to answer some of the prompts. This is needed by Vercel to make sure your project is deployed properly wiht any alternate approach you may have.
 
-3. Add enviroment variables:
+3. Add environment variables:
     ```
     vercel env add DATABASE_URL --cwd ./shorten-url-functions
     ```
     a prompt will appear asking for the value, paste the database connection string copied from the Neon project dashboard.
 
-    You will need to deploy the function again using the command from step 2 so that the deployed function can use the newly added enivronment variable, most of the time it is not needed but it's better to make sure
+    You will need to deploy the function again using the command from step 2 so that the deployed function can use the newly added environment variable, most of the time it is not needed but it's better to make sure
 
-4. That's it with the serverless funtion deployment, now we need to get the domain. 
+4. That's it with the serverless function deployment, now we need to get the domain. 
 
-    If you have a custom domain want to use that for creating short URLs then follow this doc [link](https://vercel.com/docs/projects/domains/add-a-domain) 
+    If you have a custom domain and want to use it as the domain for creating short URLs then follow this doc [link](https://vercel.com/docs/projects/domains/add-a-domain) 
 
     Or else if you want to use the domain generated by Vercel for your project then go to the project dashboard and copy the domain name.
 
@@ -104,17 +104,17 @@ Deploying projects on [Vercel](https://vercel.com/docs/deployments/overview) is 
 
 # Usage
 
-### Create short URL
+### Create a short URL
 ```bash
 shortenurl alias create <URL>
 ```
 This will generate an alias for the short URL and creates a record in the database. If the provided URL already exists then it will throw an error.
 
-### Get long and short URL by alias
+### Get long and short URLs by alias
 ```bash
 shortenurl alias get <alias>
 ```
-If you have an alias (e.g. U9uaR8C) but not sure which long URL it belongs to then use this command.
+If you have an alias (e.g. U9uaR8C) but are not sure which long URL it belongs to then use this command.
 
 ### List all records
 ```bash
@@ -122,11 +122,11 @@ shortenurl alias get-all
 ```
 This command will list out all the short URLs and the respective long URLs
 
-### Remove record by alias
+### Remove a record by the alias
 ```bash
 shortenurl alias remove-alias <alias>
 ```
-To remove a short URL and it's respective long URL, you can use this command to remove by providing the alias(e.g. U9kHB4Z)
+To remove a short URL and its respective long URL, you can use this command by providing the alias(e.g. U9kHB4Z)
 
 ### Remove all records
 ```bash
@@ -137,6 +137,6 @@ Like it says flushes out everything.
 > Be careful when you remove a record because you may have used these short URLs at some other places, removing them and using these short URLs again will give 404.
 
 # Conclusion
-This was a fun project for me and has lots of scope for new features like analytics, caching, real-time logging, URL grouping by domain name, and so on. But for now this is it, if you think this project can be used as alternative to other similar products out there because of the control, minimal to no cost, and hell lot of customizations it provides then let me know [here](shubpramanik241@gmail.com), I would be happy to craft this for production use. 
+This was a fun project for me and has lots of scope for new features like analytics, caching, real-time logging, URL grouping by domain name, and so on. But for now, this is it, if you think this project can be used as an alternative to other similar products out there because of the control, minimal to no cost, and hell lot of customizations it provides then let me know [here](shubpramanik241@gmail.com), I would be happy to craft this for production use. 
 
-**Signin out!!!**
+**Signing out!!!**
