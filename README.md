@@ -1,9 +1,23 @@
 This project is built using Vercel, Neon and Rust. It is a link managing application that has a CLI to create, read and delete short URLs. I have used Vercel to deploy a serverless function for redirection to long URLs, it is easy, fast and free.
 
-**What is URL shortener and why do we need it?**
-URL shortener is a service that is used create short URLs that works as an alias for long URLs, this is important when you have a long URL (e.g. https://chart.apis.google.com/chart?chs=500x500&chma=0,0,100,100&cht=p&chco=FF0000%2CFFFF00%7CFF8000%2C00FF00%7C00FF00%2C0000FF&...) and sharing this with others is not that neat, what if you snap out some characters at the end of the URL. It becomes really hard this way, that is where we can use a URL shortening service that can generate an alias for the long URLs having comparitively very small length. The other benefits of having a short URLs or aliases are you can customise how you want your URL to appear(e.g. https://foo.baz/2fGH553), generate analytics like number of users clicked, country of origin, and many more. 
+## What is URL shortener and why do we need it?
+
+URL shortener is a service that is used create short URLs that works as an alias for long URLs, this is important when you have a long URL (e.g. https://chart.apis.google.com/chart?chs=500x500&chma=0,0,100,100&cht=p&chco=FF0000%2CFFFF00%7CFF8000%2C00FF00%7C00FF00%2C0000FF&...) and sharing this with others is not that neat, what if you snap out some characters at the end of the URL. 
+
+It becomes really hard this way, that is where we can use a URL shortening service that can generate an alias for the long URLs having comparitively very small length. The other benefits of having a short URLs or aliases are you can customise how you want your URL to appear(e.g. https://foo.baz/2fGH553), generate analytics like number of users clicked, country of origin, and many more. 
 
 Many big companies like Twitter or X uses this service for sharing any content outside thier application. 
+
+## How does it work?
+![alt text](/assets/image.png)
+
+User enters the shorturl, every shorturl must have a path, the path acts as a unique identifer and using this we query the database to find the record. 
+
+If there exists a record then we will send the browser the long URL to the browser to redirect the user to the destination page, the redirection can be temporary or permanent there are trade-offs on using one over the another. Once the browser recieves the it will open the redirected page.
+
+If the record doesn't exists or path is not what was expected then user will get 404 status page.
+
+As simple as that!!!
 
 # Pre-requisites
 - NodeJS - [Link](https://nodejs.org)
@@ -26,10 +40,10 @@ I appreciate Neon and the team behind it, they ingeniously crafted everything ar
 1. Go to their [website](https://console.neon.tech/), log in, or create an account.
 
 2. Create a project and a database, name them whatever you want:
-![Create project GIF](<GIF Recording 2024-04-15 at 6.16.04 AM.gif>)
+![Create project GIF](/assets/GIF%20Recording%202024-04-15%20at%206.16.04%20AM.gif)
 
 3. Go to your project dashboard, select your database, and copy the connection string, you will need this connection string later: 
-![Get connection string](<GIF Recording 2024-04-15 at 6.18.46 AM.gif>)
+![Get connection string](/assets/GIF%20Recording%202024-04-15%20at%206.18.46%20AM.gif)
 
 ## Deploy serverless function Vercel
 Deploying projects on [Vercel](https://vercel.com/docs/deployments/overview) is completely free in hobby accounts, and you can add custom domains to your projects if you have however by default Vercel will generate a production URL for your project.

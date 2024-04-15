@@ -1,5 +1,7 @@
 /shorten-url-functions/node_modules
 /shorten-url-functions/.vercel
 /shorten-url-functions/.env
+/shorten-url-functions/auth.json
+/shorten-url-functions/config.json
 /shorten-url-cli/Cargo.lock
 /shorten-url-cli/target
